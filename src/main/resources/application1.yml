@@ -1,0 +1,34 @@
+#server:
+#  port: 8081
+#
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: 1414Kiki
+#    url: jdbc:mysql://localhost:3306/bankbase
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySql5Dialect
+#    show-sql: true
+
+#      server:
+#        port: 1111
+#      spring:
+#        application:
+#          name: client-one
+#        datasource:
+#          password: mysql
+#          url: jdbc:mysql://localhost:3306/documents
+#          username: postgres
+#        jpa:
+#          hibernate:
+#            ddl-auto: update
+#          properties:
+#            hibernate:
+#              dialect: org.hibernate.dialect.PostgreSQLDialect
+#          show-sql: true

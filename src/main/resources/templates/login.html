@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Spring Security Example </title>
+</head>
+<style>
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: sans-serif;
+        line-height: 1.5;
+        min-height: 100vh;
+        background: #2B2929;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .main {
+        background-color: #3A3737;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(232, 232, 232, 0.2);
+        padding: 10px 20px;
+        transition: transform 0.2s;
+        width: 500px;
+        text-align: center;
+    }
+
+    h1,h3,p {
+        color: whitesmoke;
+    }
+
+    label {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        text-align: left;
+        color: whitesmoke;
+        font-weight: bold;
+    }
+
+
+    input {
+        display: block;
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f1f1f1
+    }
+    /*  color: white;
+  background-color: #04AA6D;*/
+       button {
+           padding: 15px;
+           border-radius: 10px;
+           margin-top: 15px;
+           margin-bottom: 15px;
+           border: none;
+           background-color: #C4C4C4;
+           color: black;
+           cursor: pointer;
+           width: 100%;
+           font-size: 16px;
+       }
+
+       .wrap {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+       }
+</style>
+<body>
+<div class="main">
+    <h1>Sing in</h1>
+    <h3>Enter your login credentials</h3>
+    <div th:if="${param.error}">
+        Invalid username or password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+    <form th:action="@{/login}" method="post">
+        <div><label> User Name : <input type="text" name="username" placeholder="Enter your Username" required/> </label></div>
+        <div><label> Password: <input type="password" name="password" placeholder="Enter your Password" required/> </label></div>
+        <div class="wrap">
+            <button type="submit"
+                    onclick="solve()">
+                Sign In
+            </button>
+        </div>
+        <!--    <div><input type="submit" value="Sign In"/></div>-->
+    </form>
+    <p>Not registered?
+        <a href="http://localhost:8080/registration"
+           style="">
+            Create an account
+        </a>
+    </p>
+</div>
+</body>
+</html>

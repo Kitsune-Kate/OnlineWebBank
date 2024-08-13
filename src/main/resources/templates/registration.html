@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box
+    }
+
+    /* Add padding to containers */
+    .container {
+        padding: 16px;
+    }
+    .center { text-align: center; }
+    body {
+        font-family: sans-serif;
+        line-height: 1.5;
+        min-height: 100vh;
+        background: #f3f3f3;
+        flex-direction: column;
+        margin: 0;
+
+    }
+    .containerSignIn{
+        background-color: #191815;
+        text-align: center;
+    }
+
+    .main {
+        background-color: #191815;
+        border-radius: 15px;
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+
+
+    }
+
+    /* Full-width input fields */
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        background: #f1f1f1;
+
+    }
+
+    input[type=text]:focus, input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+
+    }
+
+    input {
+        display: block;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f1f1f1;
+        transition: transform 0.2s;
+        float: right;
+
+    }
+    .textCh {
+        float: left;
+        line-height: 1.8;
+    }
+    label{
+        text-align: left;
+    }
+
+    /* Overwrite default styles of hr */
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+    }
+
+    /* Set a style for the submit/register button */
+    .registerbtn {
+        background-color: #C4C4C4;
+        color: black;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+        border-radius: 10px;
+        font-size: 20px;
+    }
+
+    .registerbtn:hover {
+        opacity: 1;
+    }
+
+    /* Add a blue text color to links */
+    a {
+        color: dodgerblue;
+    }
+
+    /* Set a grey background color and center the text of the "sign in" section */
+    .signin {
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    .error {
+        text-align: center;
+    }
+
+    h1 {
+        color: #04AA6D;
+    }
+
+    button {
+        font-size: 16px;
+    }
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    /*.wrapper {*/
+    /*    padding: 100px;*/
+    /*}*/
+
+    /*.image--cover {*/
+    /*    width: 150px;*/
+    /*    height: 150px;*/
+    /*    border-radius: 50%;*/
+
+    /*    object-fit: cover;*/
+    /*    object-position: center right;*/
+    /*}*/
+    body {
+        margin: 25px;
+        font-family: verdana;
+    }
+
+    h1 {
+        color: darkslategray;
+    }
+
+    p {
+        font-size: 12pt;
+        color: black;
+    }
+
+    canvas {
+        height: 175px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: black;
+    }
+
+    input {
+        font-family: verdana;
+        font-size: 12pt;
+    }
+
+    .profile-pic {
+        color: transparent;
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .profile-pic input {
+        display: none;
+    }
+
+    .profile-pic img {
+        position: absolute;
+        object-fit: cover;
+        width: 165px;
+        height: 165px;
+        box-shadow: 0 0 10px 0 rgba(255, 255, 255, .35);
+        border-radius: 100px;
+        z-index: 0;
+    }
+
+    .profile-pic .-label {
+        cursor: pointer;
+        height: 165px;
+        width: 165px;
+    }
+
+    .profile-pic:hover .-label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, .8);
+        z-index: 10000;
+        color: #fafafa;
+        transition: background-color 0.2s ease-in-out;
+        border-radius: 100px;
+        margin-bottom: 0;
+    }
+
+    .profile-pic span {
+        display: inline-flex;
+        padding: 0.2em;
+        height: 2em;
+    }
+
+    body {
+        height: 100vh;
+        background-color: #191815;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #F4F4F4;
+    }
+
+    body a:hover {
+        text-decoration: none;
+    }
+
+    h1 {
+        color: #F4F4F4;
+    }
+
+</style>
+
+<body>
+<div class="main">
+    <form th:action="@{/registration}" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <h1>Registration</h1>
+            <hr>
+<!--            <label > <b>Photo</b></label>-->
+            <div class="profile-pic">
+                <label class="-label" for="file">
+                    <span class="glyphicon glyphicon-camera"></span>
+                    <span>Change Image</span>
+                </label>
+                <input id="file" type="file" onchange="loadFile(event)" multiple="false" accept="image/*" name="image"/>
+
+                <img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg" id="output"
+                     width="200" th:src="@{/img/{filename}(filename = ${filename})}"/>
+            </div>
+            <br/>
+            <label for="name"  class="textCh" ><b>Name</b></label>
+            <input type="text" placeholder="Enter Name" name="name" id="name" required>
+
+            <label for="firstName" class="textCh"><b>First Name</b></label>
+            <input type="text" placeholder="Enter firstName" name="firstName" id="firstName" required>
+
+            <label for="username" class="textCh"><b>Username</b></label>
+            <input type="text" placeholder="Enter username" name="username" id="username" required>
+
+            <label for="password" class="textCh"><b>Password</b></label>
+            <input type="password" placeholder="Enter password" name="password" id="password" required>
+
+            <label for="password-repeat" class="textCh"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Repeat Password" name="password-repeat" id="password-repeat" required>
+            <p class="error" th:text="${error}"></p>
+
+            <button type="submit" class="registerbtn"> <b>Sing up </b></button>
+        </div>
+
+        <div class="containerSignIn">
+            <p style="color:whitesmoke;" class="center">Already have an account? <a href="http://localhost:8080/login">Sign in</a>.</p>
+        </div>
+
+    </form>
+</div>
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById("output");
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+    //     function upload(){
+    //     var imgcanvas = document.getElementById("canv1");
+    //     var fileinput = document.getElementById("finput");
+    //     var image = new SimpleImage(fileinput);
+    //     image.drawTo(imgcanvas);
+    // }
+</script>
+</body>
+</html>

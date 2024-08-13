@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-holder">
+<h3><h4>Balance :  </h4>  <td th:text="${balance}"></td> </h3>
+</div>
+<form th:action="@{/transferFunds}" method="post">
+    <input type="hidden" name="id" th:value="${id}"/>
+    <div class="card-transfer">
+        <div class="transferFunds">Transfer amount<br/><input name="transferFunds" type="text"
+                                                                  th:value="${transferFunds}"
+                                                                  maxlength="15 " size="5"></div>
+        <br>
+        <div class="validity">
+            <select name="choice">
+                <option th:each="currencies : ${T(org.example.model.Currency).values()}"
+                        th:value="${currencies}"
+                        th:text="${currencies}">
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="TransferFundsBut">
+        <button >Transfer funds</button>
+    </div>
+</form>
+</body>
+</html>
